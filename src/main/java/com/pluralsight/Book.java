@@ -7,13 +7,13 @@ public class Book {
     private boolean isCheckedOut;
     private String checkedOutTo;
 
-    public Book(int id, String isbn, String title) {
+    public Book(int id, String title, String isbn) {
         this.id = id;
-        this.isbn = isbn;
         this.title = title;
+        this.isbn = isbn;
 
-        this.isCheckedOut = false;
         this.checkedOutTo = "";
+        this.isCheckedOut = false;
     }
 
     public int getId() {
