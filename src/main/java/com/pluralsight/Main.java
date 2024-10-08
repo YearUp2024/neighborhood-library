@@ -7,8 +7,44 @@ public class Main {
         library = GetInitializedLibrary();
         //DisplayBooks(library);
 
+        char option;
 
-        char option = PromptMainChoices();
+        do{
+           option = PromptMainChoices();
+            if(option == 'A'){
+                Book[] avaliableBooks = GetAvaliableBoods(library);
+                DisplayBooks(avaliableBooks);
+            }else if(option == 'C'){
+                Book[] checkedOutBooks = GetAvaliableBoods(library);
+                DisplayBooks(checkedOutBooks);
+            }
+        }while(option != 'X');
+    }
+
+    public static Book[] GetAvaliableBoods(Book[] books){
+        Book[] avaliable = new Book[books.length];
+        int nextIndex = 0;
+        for(Book book : books){
+            if(!book.isCheckedOut()){
+                avaliable[nextIndex++] = book;
+            }
+        }
+        Book[] result = new Book[nextIndex];
+        System.arraycopy(avaliable, 0, result, 0, nextIndex);
+        return result;
+    }
+
+    public static Book[] GetCheckedOutBoods(Book[] books){
+        Book[] checkedOut = new Book[books.length];
+        int nextIndex = 0;
+        for(Book book : books){
+            if(!book.isCheckedOut()){
+                checkedOut[nextIndex++] = book;
+            }
+        }
+        Book[] result = new Book[nextIndex];
+        System.arraycopy(checkedOut, 0, result, 0, nextIndex);
+        return result;
     }
 
     public static void DisplayBooks(Book[] books){
