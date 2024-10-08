@@ -5,17 +5,15 @@ public class Main {
 
     public static void main(String[] args) {
         library = GetInitializedLibrary();
-        //DisplayBooks(library);
 
         char option;
-
         do{
            option = PromptMainChoices();
             if(option == 'A'){
                 Book[] avaliableBooks = GetAvaliableBoods(library);
                 DisplayBooks(avaliableBooks);
             }else if(option == 'C'){
-                Book[] checkedOutBooks = GetAvaliableBoods(library);
+                Book[] checkedOutBooks = GetCheckedOutBooks(library);
                 DisplayBooks(checkedOutBooks);
             }
         }while(option != 'X');
@@ -34,11 +32,11 @@ public class Main {
         return result;
     }
 
-    public static Book[] GetCheckedOutBoods(Book[] books){
+    public static Book[] GetCheckedOutBooks(Book[] books){
         Book[] checkedOut = new Book[books.length];
         int nextIndex = 0;
         for(Book book : books){
-            if(!book.isCheckedOut()){
+            if(book.isCheckedOut()){
                 checkedOut[nextIndex++] = book;
             }
         }
@@ -106,5 +104,4 @@ public class Main {
         library[7].checkedOut("Very Long Named John");
         return library;
     }
-
 }
