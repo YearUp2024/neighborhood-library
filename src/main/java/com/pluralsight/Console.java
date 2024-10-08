@@ -40,6 +40,4 @@ public class Console {
         byte userinput =scanner.nextByte();
         return userinput;
     }
-
-
 }
